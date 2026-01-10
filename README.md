@@ -1,2 +1,4 @@
-# conversor-de-unidades
-Conversor simples de unidades feito em GO
+# Conversor de Unidades
+Conversor de unidades simples feito na Linguagem GO
+
+
