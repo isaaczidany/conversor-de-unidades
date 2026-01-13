@@ -1,57 +1,36 @@
-# 🔄 Conversor de Unidades em Go
+Cnversor de Unidades em Go
 
 Aplicação em linha de comando desenvolvida em Go para conversão entre diferentes unidades de medida.
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
 O programa permite converter valores entre:
 
-### 🌡️ Temperatura
+### Temperatura
 - Celsius
 - Fahrenheit
 - Kelvin
 
-### 📏 Comprimento
+### Comprimento
 - Metro
 - Centímetro
 - Quilômetro
 
-### 🚀 Velocidade
+### Velocidade
 - km/h
 - m/s
 
-### ⏱️ Tempo
+### Tempo
 - Segundos
 - Minutos
 - Horas
 
-### 🧪 Volume
+### Volume
 - Litros
 - Mililitros
 - Metros cúbicos
-
----
-
-## 🧠 Estrutura do projeto
-
-- `main`:
-  - Exibe menus
-  - Lê entradas do usuário
-  - Exibe os resultados
-
-- Funções específicas:
-  - Responsáveis apenas pelos cálculos
-  - Retornam valores já convertidos
-
-
----
-
-## 🛠️ Tecnologias utilizadas
-
-- Go (Golang)
-- Biblioteca padrão (`fmt`)
 
 ---
 
