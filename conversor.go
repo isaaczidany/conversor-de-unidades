@@ -1,10 +1,39 @@
 package main
 
 import ("fmt")
+
+func calcTemperatura (escolhatemp int, temperatura float64) (float64, float64, float64) {
+ 	var Celsius, Fahrenheit, Kelvin float64
+	switch escolhatemp {
+	case 1:
+		Celsius = temperatura
+		Fahrenheit = (temperatura*1.8) + 32
+		Kelvin = temperatura + 273.15
+
+		return Celsius, Fahrenheit, Kelvin
+	case 2:
+		Fahrenheit = temperatura
+		Celsius = (temperatura - 32)/1.8
+		Kelvin = Celsius + 273.15
+		return Celsius, Fahrenheit, Kelvin
+	case 3:
+		Kelvin = temperatura
+		Celsius = temperatura - 273.15
+		Fahrenheit = (Celsius * 1.8) + 32
+		return Celsius, Fahrenheit, Kelvin
+	default:
+		Celsius = 0
+		Kelvin = 0
+		Fahrenheit = 0
+		return Celsius, Fahrenheit, Kelvin
+	}
+}
+
+
 func main() {
 
 	var escolha, escolhatemp, escolhacomp, escolhavel, escolhatempo, escolhavol int
-
+	var temperatura float64
 	fmt.Println(`
 		Escolha o tipo de conversão de unidade:
 		1. Temperatura (Celsius, Fahrenheit, Kelvin)
@@ -23,31 +52,18 @@ func main() {
 				3. Kelvin
 				`)
 		fmt.Scan(&escolhatemp)
+		fmt.Println("Qual a temperatura?")
+		fmt.Scan(&temperatura)
+		var Celsius, Fahrenheit, Kelvin = calcTemperatura(escolhatemp, temperatura)
+		fmt.Printf(
+		"\n================= CONVERSÃO DE TEMPERATURA =================\n"+
+		"Celsius     : %.2f °C\n"+
+		"Fahrenheit  : %.2f °F\n"+
+		"Kelvin      : %.2f K\n"+
+		"============================================================\n",
+		Celsius, Fahrenheit, Kelvin)
 
-		var temperatura float64
 
-		switch escolhatemp {
-		case 1:
-			fmt.Println(`Qual a temperatura em Celsius?`)
-			fmt.Scan(&temperatura)
-			fmt.Printf("Temperatura em Celsius: %.2f°C | ", temperatura)
-			fmt.Printf("Temperatura em Fahrenheit:%.2f°F | ", (temperatura*1.8)+32)
-			fmt.Printf("Temperatura em Kelvin: %.2fK", temperatura+273.15)
-		case 2:
-			fmt.Println(`Qual a temperatura em Fahrenheit?`)
-			fmt.Scan(&temperatura)
-			fmt.Printf("Temperatura em Fahrenheit: %.0f°F |", temperatura)
-			fmt.Printf(" Temperatura em Celsius: %.0f°C |", (temperatura-32)/1.8)
-			fmt.Printf(" Temperatura em Kelvin: %.2fK", ((temperatura-32)/1.8)+273.15)
-		case 3:
-			fmt.Println(`Qual a temperatura em Kelvin?`)
-			fmt.Scan(&temperatura)
-			fmt.Printf("Temperatura em Kelvin: %.2fK | ", temperatura)
-			fmt.Printf("Temperatura em Celsius: %.2f°C | ", temperatura-273.15)
-			fmt.Printf("Temperatura em Fahrenheit:%.2f°F", ((temperatura-273.15)*1.8)+32)
-		default:
-			fmt.Println("Escolha Inválida")
-		}
 	case 2:
 		fmt.Println(`
 				Qual sua unidade de medida de Comprimento?
