@@ -1,7 +1,5 @@
 package main
-
 import ("fmt")
-
 func calcTemperatura (escolhatemp int, temperatura float64) (float64, float64, float64) {
  	var Celsius, Fahrenheit, Kelvin float64
 	switch escolhatemp {
@@ -9,7 +7,6 @@ func calcTemperatura (escolhatemp int, temperatura float64) (float64, float64, f
 		Celsius = temperatura
 		Fahrenheit = (temperatura*1.8) + 32
 		Kelvin = temperatura + 273.15
-
 		return Celsius, Fahrenheit, Kelvin
 	case 2:
 		Fahrenheit = temperatura
@@ -28,12 +25,34 @@ func calcTemperatura (escolhatemp int, temperatura float64) (float64, float64, f
 		return Celsius, Fahrenheit, Kelvin
 	}
 }
-
-
+func calcComprimento (escolhacomp int, comprimento float64) (float64, float64, float64) {
+	var m2, km2, cm2 float64
+	switch escolhacomp {
+		case 1:
+			m2 = comprimento
+			km2 = comprimento/1000000
+			cm2 = comprimento * 10000
+			return m2, km2, cm2
+		case 2:
+			km2 = comprimento
+			m2 = comprimento * 1000000
+			cm2 = comprimento * 10000000000
+			return m2, km2, cm2
+		case 3:
+			cm2 = comprimento
+			m2 = comprimento/10000
+			km2 = comprimento/10000000000
+			return m2, km2, cm2
+		default:
+			m2 = 0
+			cm2 = 0
+			km2 = 0
+			return m2, km2, cm2
+	}
+}
 func main() {
-
 	var escolha, escolhatemp, escolhacomp, escolhavel, escolhatempo, escolhavol int
-	var temperatura float64
+	var temperatura, comprimento float64
 	fmt.Println(`
 		Escolha o tipo de conversão de unidade:
 		1. Temperatura (Celsius, Fahrenheit, Kelvin)
@@ -62,8 +81,6 @@ func main() {
 		"Kelvin      : %.2f K\n"+
 		"============================================================\n",
 		Celsius, Fahrenheit, Kelvin)
-
-
 	case 2:
 		fmt.Println(`
 				Qual sua unidade de medida de Comprimento?
@@ -72,31 +89,18 @@ func main() {
 				3. cm²
 				`)
 		fmt.Scan(&escolhacomp)
+		fmt.Println("Qual o valor do comprimento?")
+		fmt.Scan(&comprimento)
+		var m2, cm2, km2 = calcComprimento (escolhacomp, comprimento)
+		fmt.Printf(
+		"\n================= CONVERSÃO DE TEMPERATURA =================\n"+
+		"m²     : %.2f m²\n"+
+		"km²    : %.10f km²\n"+
+		"cm²    : %.2f cm²\n"+
+		"============================================================\n",
+		m2, cm2, km2,
+		)
 
-		var comprimento float64
-
-		switch escolhacomp {
-		case 1:
-			fmt.Println("Qual o comprimento em m²?")
-			fmt.Scan(&comprimento)
-			fmt.Printf("Comprimento em m²: %.2f m² | ", comprimento)
-			fmt.Printf("Comprimento em km²: %.6f km² | ", comprimento/1000000)
-			fmt.Printf("Comprimento em cm²: %.2f cm²", comprimento * 10000)
-		case 2:
-			fmt.Println("Qual o comprimento em km²?")
-			fmt.Scan(&comprimento)
-			fmt.Printf("Comprimento em km²: %.2f km² | ", comprimento)
-			fmt.Printf("Comprimento em m²: %.2f m² | ", comprimento * 1000000)
-			fmt.Printf("Comprimento em cm²: %.2f cm²", comprimento * 10000000000)
-		case 3:
-			fmt.Println("Qual o comprimento em cm²?")
-			fmt.Scan(&comprimento)
-			fmt.Printf("Comprimento em cm²: %.2f cm² | ", comprimento)
-			fmt.Printf("Comprimento em m²: %.6f m² | ", comprimento / 10000)
-			fmt.Printf("Comprimento em km²: %.10f km²", comprimento / 10000000000)
-		default:
-			fmt.Println("Escolha Inválida")
-		}
 	case 3:
 			fmt.Println(`
 				Qual sua unidade de medida de Velocidade?
