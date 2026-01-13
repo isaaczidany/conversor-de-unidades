@@ -30,28 +30,28 @@ func calcTemperatura(escolhatemp int, temperatura float64) (float64, float64, fl
 	}
 }
 func calcComprimento(escolhacomp int, comprimento float64) (float64, float64, float64) {
-	var m2, km2, cm2 float64
+	var m, km, cm float64
 	switch escolhacomp {
 	case 1:
-		m2 = comprimento
-		km2 = comprimento / 1000000
-		cm2 = comprimento * 10000
-		return m2, km2, cm2
+		m = comprimento
+		km = comprimento / 1000
+		cm = comprimento * 100
+		return m, km, cm
 	case 2:
-		km2 = comprimento
-		m2 = comprimento * 1000000
-		cm2 = comprimento * 10000000000
-		return m2, km2, cm2
+		km = comprimento
+		m = km * 1000
+		cm = m * 100
+		return m, km, cm
 	case 3:
-		cm2 = comprimento
-		m2 = comprimento / 10000
-		km2 = comprimento / 10000000000
-		return m2, km2, cm2
+		cm = comprimento
+		m = cm / 100
+		km = m / 1000
+		return m, km, cm
 	default:
-		m2 = 0
-		cm2 = 0
-		km2 = 0
-		return m2, km2, cm2
+		m = 0
+		cm = 0
+		km = 0
+		return m, km, cm
 	}
 }
 func calcVelocidade(escolhavel int, velocidade float64) (float64, float64) {
@@ -127,9 +127,9 @@ func main() {
 	fmt.Println(`
 		Escolha o tipo de conversão de unidade:
 		1. Temperatura (Celsius, Fahrenheit, Kelvin)
-		2. Comprimentos (m², km², cm²)
+		2. Comprimentos (m, km, cm)
 		3. Velocidade (m/s, km/h)
-		4. Tempo (segundos, minutos, horas, dias)
+		4. Tempo (segundos, minutos, horas)
 		5. Volume (m³, L, mL)
 	`)
 	fmt.Scan(&escolha)
@@ -155,21 +155,21 @@ func main() {
 	case 2:
 		fmt.Println(`
 				Qual sua unidade de medida de Comprimento?
-				1. m²
-				2. km²
-				3. cm²
+				1. m
+				2. km
+				3. cm
 				`)
 		fmt.Scan(&escolhacomp)
 		fmt.Println("Qual o valor do comprimento?")
 		fmt.Scan(&comprimento)
-		var m2, cm2, km2 = calcComprimento(escolhacomp, comprimento)
+		var m, cm, km = calcComprimento(escolhacomp, comprimento)
 		fmt.Printf(
 			"\n================= CONVERSÃO DE COMPRIMENTO =================\n"+
-				"m²     : %.2f m²\n"+
-				"km²    : %.10f km²\n"+
-				"cm²    : %.2f cm²\n"+
+				"m    : %.3f m\n"+
+				"km   : %.4f km\n"+
+				"cm   : %.2f cm\n"+
 				"============================================================\n",
-			m2, cm2, km2)
+			m, cm, km)
 	case 3:
 		fmt.Println(`
 				Qual sua unidade de medida de Velocidade?
