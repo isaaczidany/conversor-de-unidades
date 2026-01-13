@@ -34,7 +34,7 @@ O programa permite converter valores entre:
 
 ---
 
-## ▶️ Como executar
+## Como executar
 
 1. Tenha o Go instalado
 2. Clone o repositório
