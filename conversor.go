@@ -93,7 +93,7 @@ func main() {
 		fmt.Scan(&comprimento)
 		var m2, cm2, km2 = calcComprimento (escolhacomp, comprimento)
 		fmt.Printf(
-		"\n================= CONVERSÃO DE TEMPERATURA =================\n"+
+		"\n================= CONVERSÃO DE COMPRIMENTO =================\n"+
 		"m²     : %.2f m²\n"+
 		"km²    : %.10f km²\n"+
 		"cm²    : %.2f cm²\n"+
